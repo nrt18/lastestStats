@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Latest Video</title>
+  <link rel="icon" type="image/x-icon" href="" id="icon">
+      <meta name="description"
+        content="Tracking any YouTube Channel Latest Video!" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title"
+        content="YouTube Channel Latest Video Statistics" />
+    <meta name="twitter:description"
+        content="Tracking any YouTube Channel Latest Video!" />
+    <meta name="twitter:image"
+        content="https://api.microlink.io/?url=https://lastestvideostats.gnzisepic777.repl.co/&screenshot=true&embed=screenshot.url&overlay.browser=dark" />
+    <meta property="og:title"
+        content="YouTube Channel Latest Video Statistics" />
+    <meta property="og:description"
+        content="Tracking any YouTube Channel Latest Video!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lastestvideostats.gnzisepic777.repl.co" />
+    <meta property="og:image"
+        content="https://api.microlink.io/?url=https://lastestvideostats.gnzisepic777.repl.co/&screenshot=true&embed=screenshot.url&overlay.browser=dark" />
+    <link rel="stylesheet" href="https://GNZ.gnzisepic777.repl.co/odo2sec.css" />
+    <script src="https://GNZ.gnzisepic777.repl.co/odometer.js"></script>
+	<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+    <script src="https://code.highcharts.com/10.3.3/highcharts.js"></script>
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap');
+
+
+body {
+	background-color: black;
+	color: white;
+}
+body.light {
+  background-color: white;
+  color: black;
+}
+.odometer {
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 7em;
+}
+
+.viewtitle {
+	font-family: "Readex Pro";
+	font-weight: 400;
+	color: #ffffff;
+	font-size: 30px;
+}
+#apiView {
+    font-family: "Roboto";
+    font-weight: 400;
+    color: white;
+    font-size: 30px;
+}
+.v {
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.l {
+	font-family: "Readex Pro";
+	font-weight: 400;
+	margin-left: 10px;
+	color: lime;
+} 
+
+.c {
+	font-family: "Readex Pro";
+	font-weight: 400;
+	margin-left: 10px;
+	color: #FEFF00;
+}
+
+
+#title {
+	font-family: "Roboto";
+	font-weight: 500;
+	position: absolute;
+	top: -15px;
+	left: 400px;
+}
+
+#thumbnail {
+	width: 384px;
+	height: 216px;
+  transition: 1s;
+}
+#thumbnail:hover {
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.up {
+    margin-top: 50px;
+    text-align: left;
+}
+.tsu {
+    color: white;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 25px;
+}
+#sinceupload {
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 100px;
+    color: white;
+}
+.note {
+    color: #006DFF;
+    font-family: "Ubuntu";
+    font-weight: 500;
+    font-size: 20px;
+}
+.but {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#set {
+    background: none;
+    border: none;
+    background-color: cyan;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Roboto";
+    transition: 0.3s;
+}
+    #tips {
+  font-family: "Roboto";
+    font-weight: 500;
+    color: yellow;
+    font-size: 20px;
+    }
+	</style>
+</head>
+
+<body>
+	<a href="https://youtube.com/watch?v=lglIQkCHO0g" target="_blank" id="videoLink">
+	<img src="https://GNZ.gnzisepic777.repl.co/loading.png" id="thumbnail" alt="Title">
+</a>
+	<h1 id="title" onclick="search()">Loading...</h1>
+    
+    <div class="v">
+	<span class="viewtitle">Video Views <iconify-icon icon="bi:eye-fill"></iconify-icon>
+	<span id="apiView" class="odometer">0</span>
+	</span>
+	</div>
+	<span id="views" class="odometer">0</span>
+   
+	<h1 class="l">Likes <iconify-icon icon="bxs:like"></iconify-icon>
+	</h1>
+	<span id="likes" class="odometer">0</span>
+	
+		<h1 class="c">Comments <iconify-icon icon="fa-solid:comment-dots"></iconify-icon>
+			</h1>
+			<span id="comments" class="odometer">0</span>
+	<div class="up">
+	    <span class="tsu">Time Since Upload:</span>
+	    <br>
+	    <span id="sinceupload">DD:HH:MM:SS</span>
+	</div>
+  <div id="tips">
+    <span>Tips:</span>
+    <br>
+    <span>• Click on video's name to change user's latest video</span>
+    <br>
+    <span>• Click on video's thumbnail to watch the video</span>
+  </div>
+    
+    <div id="viewGraph" style="width: 100%; height: 35%"></div>
+    <div id="likeGraph" style="width: 100%; height: 35%"></div>
+    <div id="commentGraph" style="width: 100%; height: 35%"></div>
+    <p class="note">Searching latest video every 5 minutes</p>
+  <script>
+    
+const urlParams = new URLSearchParams(window.location.search);
+var idName = urlParams.get("id") || "UCX6OQ3DkcsbYNE6H8uQQuVA";
+var id;
+
+function varId() {
+id = idName.split('');
+id[1] = 'U';
+id = id.join('');
+}
+
+varId();
+setInterval(varId, 2000)
+
+var view = 0;
+var like = 0;
+var comment = 0;
+var title = "Loading...";
+var thumbnail = "thumbnail.png";
+var vid;
+var channelid;
+var videoId;
+var name;
+var now;
+var uploadTime;
+var uploadDate;
+var apiView = 0;
+var viewGraph;
+var likeGraph;
+var commentGraph;
+ 
+ function genGraph() {
+    viewGraph = new Highcharts.chart({
+    chart: {
+      renderTo: "viewGraph",
+      type: "line",
+      zoomType: "x",
+      backgroundColor: "transparent",
+      plotBorderColor: "transparent",
+      animation: false,
+    },
+    title: {
+      text: "",
+    },
+    xAxis: {
+      visible: false,
+      type: 'datetime',
+    },
+    time: {
+      useUTC: false,
+    },
+    yAxis: {
+      visible: false,
+      title: {
+          text: ""
+      },
+    },
+    credits: {
+      enabled: false,
+    },
+    tooltip: {
+        shared: true,
+        formatter: function () {
+          var index = this.points[0].series.xData.indexOf(this.x);
+          var lastY = this.points[0].series.yData[index - 1];
+          var dif = this.y - lastY;
+          var r =
+            Highcharts.dateFormat("%A %b %e, %H:%M:%S", new Date(this.x)) +
+            '<br><span style="color:black;font-family:Ubuntu;">\u25CF </span>' +
+            this.points[0].series.name +
+            ": <b>" +
+            Highcharts.numberFormat(this.y, 0);
+          if (dif < 0) {
+            r +=
+              '<span style="color:#ff0000;font-weight:bold;font-family:Ubuntu;"> (' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          if (dif > 0) {
+            r +=
+              '<span style="color:#00bb00;font-weight:bold;"> (+' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          return r;
+        },
+      },
+    series: [
+      {
+        showInLegend: false,
+        name: "Views",
+        marker: { enabled: false },
+        color: "white",
+        lineColor: "white",
+        lineWidth: 4,
+      },
+    ],
+  });
+  
+  likeGraph = new Highcharts.chart({
+    chart: {
+      renderTo: "likeGraph",
+      type: "line",
+      zoomType: "x",
+      backgroundColor: "transparent",
+      plotBorderColor: "transparent",
+      animation: false,
+    },
+    title: {
+      text: "",
+    },
+    xAxis: {
+      visible: false,
+      type: 'datetime',
+    },
+    time: {
+      useUTC: false,
+    },
+    yAxis: {
+      visible: false,
+      title: {
+          text: ""
+      },
+    },
+    credits: {
+      enabled: false,
+    },
+    tooltip: {
+        shared: true,
+        formatter: function () {
+          var index = this.points[0].series.xData.indexOf(this.x);
+          var lastY = this.points[0].series.yData[index - 1];
+          var dif = this.y - lastY;
+          var r =
+            Highcharts.dateFormat("%A %b %e, %H:%M:%S", new Date(this.x)) +
+            '<br><span style="color:black;font-family:Ubuntu;">\u25CF </span>' +
+            this.points[0].series.name +
+            ": <b>" +
+            Highcharts.numberFormat(this.y, 0);
+          if (dif < 0) {
+            r +=
+              '<span style="color:#ff0000;font-weight:bold;font-family:Ubuntu;"> (' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          if (dif > 0) {
+            r +=
+              '<span style="color:#00bb00;font-weight:bold;"> (+' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          return r;
+        },
+      },
+    series: [
+      {
+        showInLegend: false,
+        name: "Likes",
+        marker: { enabled: false },
+        color: "white",
+        lineColor: "white",
+        lineWidth: 4,
+      },
+    ],
+  });
+  
+  commentGraph = new Highcharts.chart({
+    chart: {
+      renderTo: "commentGraph",
+      type: "line",
+      zoomType: "x",
+      backgroundColor: "transparent",
+      plotBorderColor: "transparent",
+      animation: false,
+    },
+    title: {
+      text: "",
+    },
+    xAxis: {
+      visible: false,
+      type: 'datetime',
+    },
+    time: {
+      useUTC: false,
+    },
+    yAxis: {
+      visible: false,
+      title: {
+          text: ""
+      },
+    },
+    credits: {
+      enabled: false,
+    },
+    tooltip: {
+        shared: true,
+        formatter: function () {
+          var index = this.points[0].series.xData.indexOf(this.x);
+          var lastY = this.points[0].series.yData[index - 1];
+          var dif = this.y - lastY;
+          var r =
+            Highcharts.dateFormat("%A %b %e, %H:%M:%S", new Date(this.x)) +
+            '<br><span style="color:black;font-family:Ubuntu;">\u25CF </span>' +
+            this.points[0].series.name +
+            ": <b>" +
+            Highcharts.numberFormat(this.y, 0);
+          if (dif < 0) {
+            r +=
+              '<span style="color:#ff0000;font-weight:bold;font-family:Ubuntu;"> (' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          if (dif > 0) {
+            r +=
+              '<span style="color:#00bb00;font-weight:bold;"> (+' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          return r;
+        },
+      },
+    series: [
+      {
+        showInLegend: false,
+        name: "Comments",
+        marker: { enabled: false },
+        color: "white",
+        lineColor: "white",
+        lineWidth: 4,
+      },
+    ],
+  });
+  }
+
+  genGraph();
+
+ function getLatest() {
+	fetch(`https://latestvideo.imtca.repl.co/${id}`)
+	  .then((res) => res.json())
+	  .then((data) => {
+		vid = data.videoId;
+		videoId = data.videoId;
+		title = data.title;
+		uploadDate = data.dateUploaded;
+	  });
+  }
+
+function data() {
+      fetch(`/api/video/${vid}`)
+        .then((res) => res.json())
+        .then((data) => {
+          view = data.counts[0]; // views
+          apiView = data.counts[1]; //api view
+		  like = data.counts[2]; // likes
+		  comment = data.counts[3]; // comments
+      document.getElementById(
+		  "thumbnail"
+		).src = data.thumbnailURL;
+        });
+      fetch(`/api/user/${idName}`)
+        .then((res) => res.json())
+        .then((data) => {
+           name = data.username;
+          document.getElementById("icon").href = data.pfp;
+        });
+    }
+
+    
+	  function render() {
+		document.getElementById("views").innerHTML = view; // views
+		document.getElementById("likes").innerHTML = like; // likes
+		document.getElementById("comments").innerHTML = comment; // comments
+		document.getElementById('apiView').innerHTML = apiView; // api view
+		document.getElementById("title").innerHTML = title; // video title
+		document.getElementById('thumbnail').alt = title;
+    document.getElementById('videoLink').href = `https://youtube.com/watch?v=${vid}`;
+    let nameCharacters = name.split("");
+		if (nameCharacters[nameCharacters.length - 1] === "s" || nameCharacters[nameCharacters.length - 1] === "S") {
+      document.title = `${name}' Latest Video Statistics`
+    } else {
+      document.title = `${name}'s Latest Video Statistics`;
+    }
+    }
+    
+     function search() {
+  const prompt = window.prompt("Enter channel Name, ID, or URL.");
+  if (prompt) {
+    fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/search/${prompt}`)
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.href = "?id=" + data.results[0].id;
+        idName = data.results[0].id;
+        genGraph();
+      });
+  }
+}
+    
+     function time() {
+         uploadTime = ((new Date().getTime()) - (new Date(uploadDate).getTime()));
+	 var days = Math.floor(uploadTime / (1000 * 60 * 60 * 24));
+     var hours = Math.floor((uploadTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+     var minutes = Math.floor((uploadTime % (1000 * 60 * 60)) / (1000 * 60));
+     var seconds = Math.floor((uploadTime % (1000 * 60)) / 1000);
+     if (days < 10) {
+         days = "0" + days
+     }
+     
+     if (hours < 10) {
+         hours = "0" + hours 
+     }
+     
+     if (minutes < 10) {
+         minutes = "0" + minutes
+     }
+     
+     if (seconds < 10) {
+         seconds = "0" + seconds
+     }
+		document.getElementById("sinceupload").textContent = `${days}:${hours}:${minutes}:${seconds}`
+     }
+    
+     function updateGraph() {
+          if (viewGraph.series[0].points.length == 3600)
+          viewGraph.series[0].data[0].remove();
+          viewGraph.series[0].addPoint([
+          Date.now(),
+          Math.floor(view),
+          ]);
+          
+          if (likeGraph.series[0].points.length == 3600)
+          likeGraph.series[0].data[0].remove();
+          likeGraph.series[0].addPoint([
+          Date.now(),
+          Math.floor(like),
+          ]);
+          
+          if (commentGraph.series[0].points.length == 3600)
+          commentGraph.series[0].data[0].remove();
+          commentGraph.series[0].addPoint([
+          Date.now(),
+          Math.floor(comment),
+          ]);
+     }
+    
+    
+    
+    
+
+setInterval(() => {
+    data();
+    render();
+}, 2000);
+setInterval(time, 1000);
+setTimeout(() => {
+setInterval(updateGraph, 2100);
+}, 6000)
+  
+getLatest();
+  
+setInterval(getLatest, 300000);
+  </script>
+  
+</body>
+</html>
